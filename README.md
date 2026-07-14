@@ -1,135 +1,142 @@
-# 🎛️ Discord Server Backup & Transfer Bot
+# Discord Server Backup & Transfer Bot
 
-Bot Discord permettant de **sauvegarder**, **restaurer** et **transférer** la structure complète d'un serveur (rôles, salons, catégories, permissions, emojis, webhooks) via un panel interactif à menus déroulants — sans taper la moindre commande complexe.
+Bot Discord permettant de sauvegarder, restaurer et transferer la structure complete d'un serveur (roles, salons, categories, permissions, emojis, webhooks) via un panel interactif a menus deroulants.
 
-## ✨ Fonctionnalités
+## Fonctionnalites
 
-- 💾 **Sauvegarde** d'un serveur en fichier JSON, envoyé directement en message privé
-- 🔄 **Restauration** d'une sauvegarde sur le même serveur (choix via menu déroulant)
-- 🚀 **Transfert** complet de la structure d'un serveur vers un autre serveur où le bot est présent (choix du serveur cible via menu déroulant)
-- ☑️ Sélection fine des éléments à traiter : rôles, salons & catégories, permissions, emojis, webhooks
-- ⚠️ Confirmation Oui/Non obligatoire avant toute action destructive
-- 📦 Gestion des sauvegardes : liste, suppression, import d'un fichier JSON externe
-- 🔒 Toutes les actions sensibles nécessitent la permission **Administrateur**
+- Sauvegarde d'un serveur en fichier JSON, envoye directement en message prive
+- Restauration d'une sauvegarde sur le meme serveur (choix via menu deroulant)
+- Transfert complet de la structure d'un serveur vers un autre serveur ou le bot est present (choix du serveur cible via menu deroulant)
+- Selection fine des elements a traiter : roles, salons et categories, permissions, emojis, webhooks
+- Confirmation obligatoire avant toute action destructive
+- Gestion des sauvegardes : liste, suppression, import d'un fichier JSON externe
+- Toutes les actions sensibles necessitent la permission Administrateur
 
-## 📋 Prérequis
+## Prerequis
 
-- Python 3.9 ou supérieur
-- Un bot Discord créé sur le [Portail développeur Discord](https://discord.com/developers/applications)
+- Python 3.9 ou superieur
+- Un bot Discord cree sur le [Portail developpeur Discord](https://discord.com/developers/applications)
 
-## 🚀 Installation
+## Installation
 
-1. **Cloner le dépôt**
+1. Cloner le depot
+
    ```bash
    git clone https://github.com/<ton-utilisateur>/<ton-repo>.git
    cd <ton-repo>
    ```
 
-2. **Installer les dépendances**
+2. Installer les dependances
+
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configurer le token**
+3. Configurer le token
 
    Copie `.env.example` en `.env` et colle ton token :
+
    ```bash
    cp .env.example .env
    ```
+
    ```
    DISCORD_TOKEN=ton_token_ici
    ```
 
-   ⚠️ Le fichier `.env` est ignoré par Git (`.gitignore`) — ne le commit jamais et ne partage jamais ton token.
+   Le fichier `.env` est ignore par Git (`.gitignore`) : ne le commit jamais et ne partage jamais ton token.
 
-## 🔧 Configuration du bot sur le portail Discord
+## Configuration du bot sur le portail Discord
 
 ### 1. Activer les Privileged Gateway Intents
 
-Sur la page de ton application → onglet **Bot** → section **Privileged Gateway Intents**, active :
-- ✅ **Server Members Intent**
-- ✅ **Message Content Intent**
+Sur la page de ton application, onglet Bot, section Privileged Gateway Intents, active :
 
-Sans ça, le bot plantera au démarrage avec une erreur `PrivilegedIntentsRequired`.
+- Server Members Intent
+- Message Content Intent
 
-### 2. Générer le lien d'invitation
+Sans cela, le bot plantera au demarrage avec une erreur `PrivilegedIntentsRequired`.
 
-Onglet **OAuth2 → URL Generator** :
-- **Scopes** : `bot`
-- **Bot Permissions** : `Administrator` (recommandé — le bot doit pouvoir créer/supprimer rôles, salons, webhooks et emojis)
+### 2. Generer le lien d'invitation
 
-Copie l'URL générée et ouvre-la dans un navigateur pour inviter le bot sur ton/tes serveur(s).
+Onglet OAuth2 puis URL Generator :
 
-> Pour un **transfert**, le bot doit être invité avec les droits Administrateur **sur les deux serveurs** (source et destination).
+- Scopes : `bot`
+- Bot Permissions : `Administrator` (recommande, le bot doit pouvoir creer/supprimer roles, salons, webhooks et emojis)
 
-## ▶️ Lancer le bot
+Copie l'URL generee et ouvre-la dans un navigateur pour inviter le bot sur ton ou tes serveurs.
+
+Pour un transfert, le bot doit etre invite avec les droits Administrateur sur les deux serveurs (source et destination).
+
+## Lancer le bot
 
 ```bash
 python main.py
 ```
 
-## 🎮 Utilisation
+## Utilisation
 
 ### Le panel principal
 
 Dans un salon texte, tape :
+
 ```
 !panel
 ```
 
-1. **Menu 1** — coche/décoche les éléments à inclure (tout est sélectionné par défaut)
-2. **Menu 2** — choisis l'action : Sauvegarder / Restaurer / Transférer
-3. Clique sur **Exécuter l'action**
+1. Menu 1 : coche ou decoche les elements a inclure (tout est selectionne par defaut)
+2. Menu 2 : choisis l'action, Sauvegarder, Restaurer ou Transferer
+3. Clique sur "Executer l'action"
 
-➡️ La suite se déroule **en messages privés** avec le bot. Assure-toi d'autoriser les MP venant des membres du serveur (Paramètres du serveur → Confidentialité).
+La suite se deroule en messages prives avec le bot. Assure-toi d'autoriser les MP venant des membres du serveur (Parametres du serveur, Confidentialite).
 
 | Action | Ce qu'il se passe |
 |---|---|
-| 💾 **Sauvegarder** | Le bot génère un fichier JSON et te l'envoie en MP |
-| 🔄 **Restaurer** | Un menu déroulant liste tes sauvegardes → tu choisis → confirmation → le serveur actuel est nettoyé puis reconstruit |
-| 🚀 **Transférer** | Un menu déroulant liste les serveurs où le bot est présent → tu choisis la destination → confirmation → le serveur cible est nettoyé puis reconstruit à l'identique |
+| Sauvegarder | Le bot genere un fichier JSON et te l'envoie en MP |
+| Restaurer | Un menu deroulant liste tes sauvegardes, tu choisis, confirmation, puis le serveur actuel est nettoye et reconstruit |
+| Transferer | Un menu deroulant liste les serveurs ou le bot est present, tu choisis la destination, confirmation, puis le serveur cible est nettoye et reconstruit a l'identique |
 
-### Commandes complémentaires
+### Commandes complementaires
 
 | Commande | Description |
 |---|---|
 | `!panel` | Affiche le panel interactif |
-| `!backups` | Liste toutes les sauvegardes stockées (nom du serveur, date, contenu) |
+| `!backups` | Liste toutes les sauvegardes stockees (nom du serveur, date, contenu) |
 | `!deletebackup <id>` | Supprime une sauvegarde du disque |
-| `!import` *(+ fichier `.json` joint)* | Importe une sauvegarde JSON externe pour pouvoir la restaurer ensuite |
+| `!import` (avec un fichier `.json` joint) | Importe une sauvegarde JSON externe pour pouvoir la restaurer ensuite |
 
-Toutes les commandes nécessitent d'être **Administrateur** sur le serveur.
+Toutes les commandes necessitent d'etre Administrateur sur le serveur.
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 .
 ├── main.py             # Bot Discord, commandes, panel interactif (UI)
-├── backup_handler.py   # Logique de sauvegarde/restauration/transfert
-├── models.py           # Structures de données (dataclasses) + sérialisation JSON
+├── backup_handler.py   # Logique de sauvegarde, restauration, transfert
+├── models.py           # Structures de donnees (dataclasses) et serialisation JSON
 ├── config.py           # Configuration (token, dossier de sauvegardes)
 ├── requirements.txt
 ├── .env.example
 └── .gitignore
 ```
 
-## ⚠️ Notes importantes
+## Notes importantes
 
-- Les actions de **restauration** et de **transfert** sont **destructives** : elles suppriment tous les salons et rôles existants du serveur cible avant de recréer ceux de la sauvegarde. Utilise toujours la confirmation proposée pour vérifier avant de valider.
-- Les permissions de salon/catégorie sont sauvegardées **par nom de rôle** (pas par ID), car les IDs n'ont plus de sens une fois transférés sur un autre serveur.
-- Les permissions accordées individuellement à des membres (et non à des rôles) ne sont **pas** sauvegardées, car elles n'ont pas de sens hors du contexte du serveur d'origine.
-- Le dossier `backups/` contient les sauvegardes en clair (JSON) — il n'est **volontairement pas versionné** (voir `.gitignore`) car il peut contenir des données de serveur.
+- Les actions de restauration et de transfert sont destructives : elles suppriment tous les salons et roles existants du serveur cible avant de recreer ceux de la sauvegarde. Utilise toujours la confirmation proposee pour verifier avant de valider.
+- Les permissions de salon ou categorie sont sauvegardees par nom de role et non par ID, car les IDs n'ont plus de sens une fois transferes sur un autre serveur.
+- Les permissions accordees individuellement a des membres, et non a des roles, ne sont pas sauvegardees, car elles n'ont pas de sens hors du contexte du serveur d'origine.
+- Le dossier `backups/` contient les sauvegardes en clair (JSON) et n'est volontairement pas versionne (voir `.gitignore`) car il peut contenir des donnees de serveur.
 
-## 🔒 Sécurité
+## Securite
 
-- Ne commit **jamais** ton fichier `.env` ni ton token Discord.
-- Si un token a été exposé (commit, capture d'écran, message public...), régénère-le immédiatement depuis le portail développeur (**Bot → Reset Token**).
-- Il est recommandé de restreindre l'accès aux commandes `!panel`, `!backups`, `!deletebackup` et `!import` aux administrateurs du serveur — ce qui est déjà fait par défaut dans ce bot.
+- Ne commit jamais ton fichier `.env` ni ton token Discord.
+- Si un token a ete expose (commit, capture d'ecran, message public), regenere-le immediatement depuis le portail developpeur (Bot, Reset Token).
+- Il est recommande de restreindre l'acces aux commandes `!panel`, `!backups`, `!deletebackup` et `!import` aux administrateurs du serveur, ce qui est deja fait par defaut dans ce bot.
 
-## 🤝 Contribuer
+## Contribuer
 
 Les pull requests sont les bienvenues. Pour des changements majeurs, ouvre d'abord une issue pour en discuter.
 
-## 📄 Licence
+## Licence
 
 Ce projet est sous licence [MIT](LICENSE).
